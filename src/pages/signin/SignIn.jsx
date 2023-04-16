@@ -4,10 +4,13 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { signin } from "../../services/userservices";
+import { Link } from 'react-router-dom';
+
 
 //Regex pattern
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
 
 export default function SignIn() {
   const [signInObj, setSignInObj] = useState({ email: "", password: "" });
@@ -58,6 +61,12 @@ export default function SignIn() {
       let response = await signin(signInObj);
       console.log(response);
       localStorage.setItem("token", response.data.id);
+      if (response.status === 200) {
+        window.location.href = '/dashboard';
+      } else {
+        alert("error in login")
+      }
+      
     }
   };
   //Sign in Page layout
@@ -161,7 +170,8 @@ export default function SignIn() {
               </a>
             </div>
             <div className="nextclk">
-              <Button variant="contained" size="small" onClick={Submit}>
+              <Button variant="contained" color='primary' size="small" onClick={Submit}>
+                
                 Next
               </Button>
             </div>

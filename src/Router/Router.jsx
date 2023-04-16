@@ -14,7 +14,7 @@ function Router() {
 
         <Route exact path={"/"} element={<AuthRoute><SignIn/></AuthRoute>}/>
         <Route path={"/signup"} element={<AuthRoute><SignUp/></AuthRoute>}/>
-        <Route path={"/Dashboard"} element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
+        <Route path={"/dashboard"} element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
       </Routes>
       
       </BrowserRouter>
